@@ -31,8 +31,12 @@ S.listItem()
     ),
  ```
 
-If i'm understanding correctly, you want the `solution` to basically use the same fields etc as `page` . If so, you'll need to copy the schema from `page` to a new document and rename, as you said.
-To get it working on the frontend, you'll need to copy the structure in `pages/case-studies` (i.e. duplicate that entire folder, rename to `solutions`). The `index.js` file will show your landing page, make sure to update the slug. You can use an ordinary `page` in place of the `archivePage` if the structure is better for your needs, but don't forget to update in this file and also in the sanity deskStructure where it says `schemaType('archivePage')`. You might need a clever bit of logic in deskStructure to exclude this landing page from the ordinary `pages`, maybe use a [filter]([filter](https://www.sanity.io/docs/create-a-link-to-a-single-edit-page-in-your-main-document-type-list#fa1e82fd32be)).
+If I'm understanding correctly, you want the `solution` to basically use the same fields etc as `page` . If so, you'll need to copy the schema from `page` to a new document and rename, as you said.
+
+To get it working on the frontend, you'll need to copy the structure in `pages/case-studies` (i.e. duplicate that entire folder, rename to `solutions`). The `index.js` file will show your landing page, make sure to update the slug.
+
+You can use an ordinary `page` in place of the `archivePage` if the structure is better for your needs, but don't forget to update in this file and also in the sanity deskStructure where it says `schemaType('archivePage')`. You might need a clever bit of logic in deskStructure to exclude this landing page from the ordinary `pages`, maybe use a [filter]([filter](https://www.sanity.io/docs/create-a-link-to-a-single-edit-page-in-your-main-document-type-list#fa1e82fd32be)).
+
 The `[slug].js` file will handle all the integrated.finance/solutions/* routes. Change any references from `case-studies`/`caseStudies` to `solutions`, and you'll also need to set up cases for solutions queries in the `getAllPageData` function in `lib/sanity.queries` - basically need an extra part like this:
 
 ```
